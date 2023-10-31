@@ -1,0 +1,19 @@
+<%@ WebHandler Language="C#" Class="DotNetVersionHandler" %>
+
+using System;
+using System.Web;
+
+public class DotNetVersionHandler : IHttpHandler
+{
+    public void ProcessRequest(HttpContext context)
+    {
+        context.Response.ContentType = "text/plain";
+        string dotNetVersion = Environment.Version.ToString();
+        context.Response.Write("Current .NET Version: " + dotNetVersion);
+    }
+
+    public bool IsReusable
+    {
+        get { return false; }
+    }
+}
