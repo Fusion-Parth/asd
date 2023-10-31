@@ -1,15 +1,18 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelloWorld.aspx.cs" Inherits="HelloWorld" %>
+<%@ WebHandler Language="C#" Class="HelloWorldHandler" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Hello World Example</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="lblHello" runat="server" Text="Hello, World!"></asp:Label>
-        </div>
-    </form>
-</body>
-</html>
+using System;
+using System.Web;
+
+public class HelloWorldHandler : IHttpHandler
+{
+    public void ProcessRequest(HttpContext context)
+    {
+        context.Response.ContentType = "text/html";
+        context.Response.Write("Hello, World!");
+    }
+
+    public bool IsReusable
+    {
+        get { return false; }
+    }
+}
