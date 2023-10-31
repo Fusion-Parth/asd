@@ -1,19 +1,15 @@
-<%@ WebHandler Language="C#" Class="DotNetVersionHandler" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VersionInfo.aspx.cs" Inherits="VersionInfo" %>
 
-using System;
-using System.Web;
-
-public class DotNetVersionHandler : IHttpHandler
-{
-    public void ProcessRequest(HttpContext context)
-    {
-        context.Response.ContentType = "text/plain";
-        string dotNetVersion = Environment.Version.ToString();
-        context.Response.Write("Current .NET Version: " + dotNetVersion);
-    }
-
-    public bool IsReusable
-    {
-        get { return false; }
-    }
-}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>ASP.NET Version Info</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="lblVersion" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
